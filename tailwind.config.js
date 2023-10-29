@@ -9,8 +9,8 @@ module.exports = {
     extend: {
       colors: {
         primary: '#186F65', // Change this to your primary color code
-        primaryDark: 'darkgreen', // Change this to your primary color code
-        secondary: '#B5CB99', // Change this to your secondary color code
+        primaryDark: '#104a43', // Change this to your primary color code
+        secondary: '#d5e5e3', // Change this to your secondary color code
       },
     },
   },
