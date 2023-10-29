@@ -37,7 +37,7 @@ function DarsWise() {
         {searchText !== "" && filteredData.length > 0 ? (
           filteredData.map((item, index) => (
             <div key={index}>
-              <Link href={`/dars/${item.slug}`}>
+              <Link href={`/dars/jr/${item.slug}`}>
                 <h1>{item.darsname}</h1>
               </Link>
             </div>
