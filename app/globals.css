@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.ggg p{
-    border: 1px solid black
+.ggg p {
+  border: 1px solid black;
+}
+* {
+  text-transform: uppercase;
 }
