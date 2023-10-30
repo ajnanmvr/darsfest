@@ -22,7 +22,7 @@ function DarsDetails() {
     values.some((value) => value && value.includes(number + 9));
   return (
     <div className="text-center text-xs m-10 print:m-0 p-8 rounded-xl">
-            <p className="text-3xl font-bold ">Jamia Dars Fest 2023-'24</p>
+            <p className="text-3xl font-bold ">Jamia Dars Fest 2023-&apos;24</p>
       <p className="text-2xl font-bold mb-2">Kondotty Zone</p>  
       <div className="">
         <div className="flex h-48 items-end mb-8 w-[1260px]">
