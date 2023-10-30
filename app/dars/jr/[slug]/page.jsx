@@ -25,11 +25,10 @@ function DarsDetails() {
       <div className="">
         <div className="flex h-48 items-end mb-8 w-[1260px]">
           <div className="w-[400px] my-auto text-center">
-          <p className="text-2xl font-bold ">{selectedDars.darsname}</p>
+            <p className="text-2xl font-bold ">{selectedDars.darsname}</p>
             <p className="font-bold mt-2">Program List for Junior Category</p>
           </div>
           <div className="">
-
             <div className="flex whitespace-nowrap font-semibold">
               <p className="w-6 print:w-5 -rotate-90">ഖിറാഅത്ത്</p>
               <p className="w-6 print:w-5 -rotate-90">ഹിഫ്ള്</p>
@@ -67,14 +66,14 @@ function DarsDetails() {
       </div>
       <div>
         {darsData.map((v, i) => (
- <div key={i} className="flex w-[1260px]">
- <p className="w-[60px] text-left line-clamp-1 font-semibold">
-   {v.code}
- </p>
- <p className="w-[340px] text-left line-clamp-1 font-semibold">
-   {v.name}
- </p>
- <div className="">
+          <div key={i} className="flex w-[1260px] ggg">
+            <p className="w-[60px] text-left line-clamp-1 font-semibold">
+              {v.code}
+            </p>
+            <p className="w-[340px] text-left line-clamp-1 font-semibold">
+              {v.name}
+            </p>
+            <div className="">
               <div className="flex border-b border-slate-800">
                 {Array.from({ length: 9 }, (_, index) => (
                   <p

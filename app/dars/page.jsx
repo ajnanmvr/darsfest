@@ -5,7 +5,7 @@ import Data from "../../data/FullData.json";
 
 function DarsWise() {
   const [searchText, setSearchText] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([...Data]);
 
   const uniqueData = Array.from(new Set(Data.map((item) => item.darsname))).map(
     (darsname) => {
@@ -38,7 +38,7 @@ function DarsWise() {
         className="w-full px-4 py-2 rounded-xl border-2 border-dashed border-primary"
       />
       <div>
-        {searchText !== "" && filteredData.length > 0 ? (
+        {filteredData.length > 0 ? (
           <div className="flex flex-wrap gap-2 justify-center mt-3">
             {filteredData.map((item, index) => (
               <div key={index} className="w-72 bg-secondary p-6 rounded-xl">
