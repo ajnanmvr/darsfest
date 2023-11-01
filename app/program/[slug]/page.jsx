@@ -79,7 +79,7 @@ function ProgramDetail() {
   }
 
   return (
-    <div className="p-20 print:p-2 flex flex-col items-center">
+    <div className="p-20 print:p-2 lg:flex lg:flex-col lg:items-center">
       <div className="text-center">
         <p className="text-3xl font-bold ">Jamia Dars Fest 2023-&apos;24</p>
         <p className="text-2xl font-bold my-2">Kondotty Zone</p>
@@ -88,7 +88,7 @@ function ProgramDetail() {
         </h1>
       </div>
 
-      <table>
+      <table className="m-3">
         <thead>
           <tr className="print:bg-black print:text-white bg-black text-white">
             <th className="p-1">Sl No</th>
