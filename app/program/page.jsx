@@ -1,28 +1,56 @@
 "use client";
 import React, { useState } from "react";
-import Data from "../data/FullData.json";
-import Link from "next/link";
+import Data from "../../data/FullData.json";
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedItem, setSelectedItem] = useState(null); // State to store the selected item
-  const filteredData = Data.filter((item) => {
-    const searchFields = [
-      "code",
-      "name",
-      "darsname",
-      "category",
-      "offstage1",
-      "offstage2",
-      "offstage3",
-      "stage1",
-      "stage2",
-      "stage3",
-      "groupstage1",
-      "groupstage2",
-      "groupstage3",
-      "groupoffstage",
-    ];
-    return searchFields.some((field) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const programFields = [
+    "offstage1",
+    "offstage2",
+    "offstage3",
+    "stage1",
+    "stage2",
+    "stage3",
+    "groupstage1",
+    "groupstage2",
+    "groupstage3",
+    "groupoffstage",
+  ];
+  const allValues = Data.reduce((result, item) => {
+    programFields.forEach((field) => {
+      if (item[field]) {
+        const programValue = item[field];
+        result.push({
+          program: programValue,
+          category: item.category,
+          candidates: Data.filter((candidate) =>
+            programFields.some(
+              (fieldToCheck) => candidate[fieldToCheck] === programValue
+            )
+          ).map((candidate) => candidate.name),
+        });
+      }
+    });
+
+    return result;
+  }, []);
+
+  // Remove duplicates based on both "program" and "category"
+  const uniqueValues = allValues.reduce((unique, current) => {
+    const isDuplicate = unique.some(
+      (item) =>
+        item.program === current.program && item.category === current.category
+    );
+    if (!isDuplicate) {
+      unique.push(current);
+    }
+    return unique;
+  }, []);
+
+  console.log(uniqueValues);
+
+  const filteredData = uniqueValues.filter((item) => {
+    return programFields.some((field) => {
       const fieldValue = item[field] || ""; // Ensure a default value if the field is undefined
       return fieldValue.toLowerCase().includes(searchTerm.toLowerCase());
     });
@@ -61,9 +89,9 @@ function Search() {
               onClick={() => openPopup(item)}
             >
               <h1 className="px-2 py-1 bg-primary inline rounded-lg text-white font-semibold">
-                {item.code}
+                {item.category}
               </h1>
-              <p className="line-clamp-2 h-12">{item.name}</p>
+              <p className="line-clamp-2 h-12">{item.program}</p>
             </div>
           ))}
         </div>
@@ -71,51 +99,24 @@ function Search() {
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center  items-center">
             <div className="bg-white p-10 rounded-xl flex flex-col items-center max-w-[400px] text-center">
               <p className="px-2 py-1 bg-primary inline rounded-lg text-white font-semibold">
-                {selectedItem.code}
+                {selectedItem.category}
               </p>
               <p className="font-bold text-xl text-primary">
-                {selectedItem.name}
+                {selectedItem.program}
               </p>
               <p className="font-bold -mt-1 text-sm ">
                 {selectedItem.category} Category
               </p>
 
-              <p className="text-sm mt-3 font-bold text-primary">Dars Name</p>
-              <p className="font-bold -mt-1 mb-4">{selectedItem.darsname}</p>
+              <p className="bg-primary text-sm text-white px-2 py-1 -mb-2 rounded-lg">
+                Candidtes
+              </p>
+              <div className="border-2 border-dashed border-primary p-3 mb-2 rounded-xl text-center">
+                {selectedItem.candidates.map((v, i) => (
+                  <p key={i}>{v}</p>
+                ))}
+              </div>
 
-              {selectedItem.stage1 ||
-              selectedItem.stage2 ||
-              selectedItem.stage3 ||
-              selectedItem.groupstage ? (
-                <>
-                  <p className="bg-primary text-sm text-white px-2 py-1 -mb-2 rounded-lg">
-                    stage
-                  </p>
-                  <div className="border-2 border-dashed border-primary p-3 mb-2 rounded-xl text-center">
-                    <p>{selectedItem.stage1}</p>
-                    <p>{selectedItem.stage2}</p>
-                    <p>{selectedItem.stage3}</p>
-                    <p>{selectedItem.groupstage}</p>
-                  </div>
-                </>
-              ) : null}
-
-              {selectedItem.offstage1 ||
-              selectedItem.offstage2 ||
-              selectedItem.offstage3 ||
-              selectedItem.groupoffstage ? (
-                <>
-                  <p className="bg-primary text-sm text-white px-2 py-1 -mb-2 rounded-lg">
-                    offstage
-                  </p>
-                  <div className="border-2 border-dashed border-primary p-3 mb-2 rounded-xl text-center">
-                    <p>{selectedItem.offstage1}</p>
-                    <p>{selectedItem.offstage2}</p>
-                    <p>{selectedItem.offstage3}</p>
-                    <p>{selectedItem.groupoffstage}</p>
-                  </div>
-                </>
-              ) : null}
               <p className="my-3 text-sm">for enquries contact admin</p>
               <button
                 className="bg-red-700 text-white font-bold px-3 py-2 rounded-lg"
