@@ -17,16 +17,17 @@ function Search() {
     "groupstage3",
     "groupoffstage",
   ];
-
   const allValues = Data.reduce((result, item) => {
     programFields.forEach((field) => {
       if (item[field]) {
         const programValue = item[field];
-        const candidates = Data.filter((candidate) =>
-          programFields.some(
-            (fieldToCheck) => candidate[fieldToCheck] === programValue
-          )
-        ).map((candidate) => ({
+        const candidates = Data.filter((candidate) => {
+          return programFields.some((fieldToCheck) => {
+            return (
+              candidate[fieldToCheck] === programValue && candidate.category === item.category
+            );
+          });
+        }).map((candidate) => ({
           code: candidate.code,
           name: candidate.name,
           darsplace: candidate.darsplace,
@@ -38,7 +39,7 @@ function Search() {
         });
       }
     });
-
+  
     return result;
   }, []);
 

@@ -23,11 +23,13 @@ function ProgramDetail() {
     programFields.forEach((field) => {
       if (item[field]) {
         const programValue = item[field];
-        const candidates = Data.filter((candidate) =>
-          programFields.some(
-            (fieldToCheck) => candidate[fieldToCheck] === programValue
-          )
-        ).map((candidate) => ({
+        const candidates = Data.filter((candidate) => {
+          return programFields.some((fieldToCheck) => {
+            return (
+              candidate[fieldToCheck] === programValue && candidate.category === item.category
+            );
+          });
+        }).map((candidate) => ({
           code: candidate.code,
           name: candidate.name,
           darsplace: candidate.darsplace,
@@ -39,7 +41,7 @@ function ProgramDetail() {
         });
       }
     });
-
+  
     return result;
   }, []);
 
@@ -70,9 +72,15 @@ function ProgramDetail() {
 
   console.log(uniqueValues); // This will now include the "slug" field for each program
 
-  // Find the program data from your Data array based on the programSlug
   const programData = uniqueValues.find((item) => item.slug === slug);
 
+  if (programData) {
+    programData.candidates.sort((a, b) => {
+      // Assuming that 'darsplace' is a string property, you can use localeCompare for string comparison.
+      return a.darsplace.localeCompare(b.darsplace);
+    });
+  }
+  
   if (!programData) {
     // Handle the case where the program is not found
     return <div>Program not found</div>;
