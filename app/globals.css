@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.ggg p {
+.ggg p,td,th {
   border: 1px solid black;
 }
 * {
@@ -11,7 +11,7 @@
 
 @media print {
   @page {
-    size: A4 landscape;
+    size: A4;
     margin: auto;
   }
 }

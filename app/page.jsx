@@ -86,7 +86,7 @@ function Search() {
               {selectedItem.stage1 ||
               selectedItem.stage2 ||
               selectedItem.stage3 ||
-              selectedItem.groupstage ? (
+              selectedItem.groupstage1 ||selectedItem.groupstage2 ||selectedItem.groupstage3  ? (
                 <>
                   <p className="bg-primary text-sm text-white px-2 py-1 -mb-2 rounded-lg">
                     stage
@@ -95,7 +95,9 @@ function Search() {
                     <p>{selectedItem.stage1}</p>
                     <p>{selectedItem.stage2}</p>
                     <p>{selectedItem.stage3}</p>
-                    <p>{selectedItem.groupstage}</p>
+                    <p>{selectedItem.groupstage1}</p>
+                    <p>{selectedItem.groupstage2}</p>
+                    <p>{selectedItem.groupstage3}</p>
                   </div>
                 </>
               ) : null}

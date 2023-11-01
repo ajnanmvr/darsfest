@@ -5,7 +5,7 @@ import Data from "../../../../data/FullData.json";
 
 function DarsDetails() {
   const { slug } = useParams();
-
+console.log(slug);
   // Find pe darsname corresponding to pe slug
   const selectedDars = Data.find((item) => item.slug === slug);
   const darsData = Data.filter(
