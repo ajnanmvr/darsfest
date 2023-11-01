@@ -28,15 +28,16 @@ function DarsWise() {
   // Check if filteredData is empty, and display uniqueData if it is
   const displayData = filteredData.length > 0 ? filteredData : uniqueData;
 
-  return (
-    <div className="p-12 lg:p-20 flex flex-col">
-            <div className="lg:fixed lg:right-20 lg:top-5 bg-white  rounded-full p-4">
+  return (<>
+    <div className="lg:fixed lg:right-20 lg:top-5 bg-white w-full lg:w-fit text-center rounded-full lg:p-4 px-4 p-10">
         <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/">Candidates
         </Link>
 
         <Link className="bg-white text-primary p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/dars/">Dars List
         </Link>
       </div>
+    <div className="p-12 pt-0 lg:p-20 flex flex-col">
+            
       <h1 className="text-center font-extrabold text-3xl text-primary mb-3">
         Dars Wise Program List
       </h1>
@@ -66,7 +67,7 @@ function DarsWise() {
           </div>
         ))}
       </div>
-    </div>
+    </div></>
   );
 }
 
