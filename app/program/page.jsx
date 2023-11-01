@@ -94,10 +94,9 @@ function Search() {
         />
         <div className="flex flex-wrap gap-2 justify-center mt-3">
           {filteredData.map((item, index) => (
-            <Link href={`/program/${item.slug}`}>
+            <Link key={index} href={`/program/${item.slug}`}>
               <div
                 className="w-72 bg-secondary p-6 rounded-xl flex flex-col gap-2 items-start cursor-pointer"
-                key={index}
               >
                 <div className="flex justify-between items-center w-full">
                   {" "}
