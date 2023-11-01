@@ -50,12 +50,7 @@ function Search() {
           >
             Candidates
           </Link>
-          <Link
-            className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1"
-            href="/program"
-          >
-            Programs
-          </Link>
+
           <Link
             className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1"
             href="/dars/"

@@ -33,8 +33,7 @@ function DarsWise() {
             <div className="lg:fixed lg:right-20 lg:top-5 bg-white  rounded-full p-4">
         <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/">Candidates
         </Link>
-        <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/program">Programs
-        </Link>
+
         <Link className="bg-white text-primary p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/dars/">Dars List
         </Link>
       </div>
