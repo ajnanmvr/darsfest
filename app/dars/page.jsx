@@ -29,8 +29,8 @@ function DarsWise() {
   const displayData = filteredData.length > 0 ? filteredData : uniqueData;
 
   return (
-    <div className="p-12 lg:p-20">
-            <div className="fixed right-20 top-5 bg-white  rounded-full p-4">
+    <div className="p-12 lg:p-20 flex flex-col">
+            <div className="lg:fixed lg:right-20 lg:top-5 bg-white  rounded-full p-4">
         <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/">Candidates
         </Link>
         <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/program">Programs

@@ -42,15 +42,27 @@ function Search() {
 
   return (
     <div className="p-12 lg:p-20">
-            <div className="fixed right-20 top-5 bg-white  rounded-full p-4">
-        <Link className="bg-white text-primary p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/">Candidates
-        </Link>
-        <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/program">Programs
-        </Link>
-        <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/dars/">Dars List
-        </Link>
-      </div>
       <div className="flex flex-col items-center gap-4">
+        <div className="lg:fixed lg:right-20 lg:top-5 bg-white  rounded-full p-4">
+          <Link
+            className="bg-white text-primary p-2 hover:bg-secondary font-bold rounded-2xl mx-1"
+            href="/"
+          >
+            Candidates
+          </Link>
+          <Link
+            className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1"
+            href="/program"
+          >
+            Programs
+          </Link>
+          <Link
+            className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1"
+            href="/dars/"
+          >
+            Dars List
+          </Link>
+        </div>
         <h1 className="text-center font-extrabold text-3xl text-primary mb-3">
           Candidate Search
         </h1>
@@ -94,7 +106,9 @@ function Search() {
               {selectedItem.stage1 ||
               selectedItem.stage2 ||
               selectedItem.stage3 ||
-              selectedItem.groupstage1 ||selectedItem.groupstage2 ||selectedItem.groupstage3  ? (
+              selectedItem.groupstage1 ||
+              selectedItem.groupstage2 ||
+              selectedItem.groupstage3 ? (
                 <>
                   <p className="bg-primary text-sm text-white px-2 py-1 -mb-2 rounded-lg">
                     stage
