@@ -68,7 +68,7 @@ console.log(slug);
               <p className="w-6 -rotate-90">പ്രബന്ധം മലയാളം </p>
               <p className="w-6 -rotate-90">റിപ്പോര്‍ട്ടിംഗ് </p>
               <p className="w-6 -rotate-90">തലവാചക നിര്‍മ്മാണം </p>
-              <p className="w-6 -rotate-90">മുദ്രവാക്യ രചന </p>
+              <p className="w-6 -rotate-90">മുദ്രാവാക്യ രചന </p>
               <p className="w-6 -rotate-90">കവിതാ രചന (അറ) </p>
               <p className="w-6 -rotate-90">
                 നിഘണ്ടു നിര്‍മ്മാണം (അറ){" "}
