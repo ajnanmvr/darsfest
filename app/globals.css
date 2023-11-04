@@ -11,7 +11,7 @@
 
 @media print {
   @page {
-    size: 210mm 297mm;
+    size: 297mm 210mm;
     margin: auto;
   }
 }
