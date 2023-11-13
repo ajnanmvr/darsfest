@@ -5,7 +5,6 @@ import Data from "../../../data/FullData.json";
 
 function ProgramDetail() {
   const { slug } = useParams();
-  console.log(slug);
   const programFields = [
     "offstage1",
     "offstage2",
@@ -69,9 +68,6 @@ function ProgramDetail() {
     const programSlug = program.slice(0, 2);
     return categorySlug + programSlug;
   }
-
-  console.log(uniqueValues); // This will now include the "slug" field for each program
-
   const programData = uniqueValues.find((item) => item.slug === slug);
 
   if (programData) {

@@ -68,8 +68,6 @@ function Search() {
     return categorySlug + programSlug;
   }
 
-  console.log(uniqueValues); // This will now include the "slug" field for each program
-
   const filteredData = uniqueValues.filter((item) => {
     return programFields.some((field) => {
       const fieldValue = item[field] || ""; // Ensure a default value if the field is undefined
