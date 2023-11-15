@@ -1,11 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Data from "../data/FullData.json";
 import Link from "next/link";
+import Headear from "@/components/Headear";
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState(null); // State to store the selected item
   const [selectedZone, setSelectedZone] = useState("");
+
+
+  useEffect(()=>{
+    const zone = localStorage.getItem("zone")
+
+    setSelectedZone(zone)
+  })
 
   const filteredData = Data.filter((item) => {
     const searchFields = [
@@ -56,21 +64,7 @@ function Search() {
   };
 
   return (<>
-    <div className="lg:fixed lg:right-20 lg:top-5 bg-white w-full lg:w-fit text-center rounded-full lg:p-4 px-4 p-10">
-          <Link
-            className="bg-white text-primary p-2 hover:bg-secondary font-bold rounded-2xl mx-1"
-            href="/"
-          >
-            Candidates
-          </Link>
-
-          <Link
-            className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1"
-            href="/dars/"
-          >
-            Dars List
-          </Link>
-        </div>
+    <Headear selectedZone={selectedZone} setSelectedZone={setSelectedZone} />
     <div className="p-12 pt-0 lg:p-20">
       <div className="flex flex-col items-center gap-4">
 
@@ -84,19 +78,7 @@ function Search() {
           onChange={handleSearch}
           className="w-2/3 px-4 py-2 rounded-xl border-2 border-dashed border-primary"
         />
-        <select
-  value={selectedZone}
-  onChange={(e) => setSelectedZone(e.target.value)}
-  className="w-2/3 px-4 py-2 rounded-xl border-2 border-dashed border-primary mt-3"
->
-  <option value="">All Zones</option>
-  {/* Assuming the zones are available in your data */}
-  {Array.from(new Set(Data.map((item) => item.zone))).map((zone, index) => (
-    <option key={index} value={zone}>
-      {zone}
-    </option>
-  ))}
-</select>
+       
 
         <div className="flex flex-wrap gap-2 justify-center mt-3">
           {filteredData.map((item, index) => (

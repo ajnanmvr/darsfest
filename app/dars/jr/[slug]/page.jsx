@@ -106,7 +106,7 @@ function DarsDetails() {
                     key={index}
                     className="w-8 print:w-8 h-5 even:bg-gray-200 font-bold"
                   >
-                    {containsNumber(
+                    {containsNumber (
                       [
                         v.stage1,
                         v.stage2,

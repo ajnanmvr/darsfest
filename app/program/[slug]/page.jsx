@@ -110,10 +110,10 @@ function ProgramDetail() {
               <td className="px-1 text-center w-8">{i + 1}</td>
               <td className="px-1 text-center w-10">{v.code}</td>
               <td className="px-1 w-64 line-clamp-1">{v.name}</td>
-              <td className="px-1 w-40">{v.darsplace}</td>
+              <td className="px-1 w-44">{v.darsplace}</td>
               <td className="px-1 w-10"></td>
               <td className="px-1 w-8"></td>
-              <td className="px-1 w-40"></td>
+              <td className="px-1 w-8"></td>
             </tr>
           ))}
         </tbody>

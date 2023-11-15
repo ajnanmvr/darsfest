@@ -1,10 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Data from "../../data/FullData.json";
 import Link from "next/link";
+import Headear from "@/components/Headear";
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedZone, setSelectedZone] = useState("");
+
+
+  useEffect (()=>{
+    const zone = localStorage.getItem("zone")
+
+    setSelectedZone(zone)
+  })
+
   const programFields = [
     "offstage1",
     "offstage2",
@@ -79,14 +89,7 @@ function Search() {
     setSearchTerm(e.target.value);
   };
   return (<>
-    <div className="lg:fixed lg:right-20 lg:top-5 bg-white w-full lg:w-fit text-center rounded-full lg:p-4 px-4 p-10">
-    <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/">Candidates
-    </Link>
-    <Link className="bg-white text-primary p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/program">Programs
-    </Link>
-    <Link className="bg-white text-slate-800 p-2 hover:bg-secondary font-bold rounded-2xl mx-1" href="/dars/">Dars List
-    </Link>
-  </div>
+    <Headear selectedZone={selectedZone} setSelectedZone={setSelectedZone}/>
     <div className="p-12 pt-0 lg:p-20">
 
       <div className="flex flex-col items-center gap-4">
