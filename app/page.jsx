@@ -5,6 +5,8 @@ import Link from "next/link";
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState(null); // State to store the selected item
+  const [selectedZone, setSelectedZone] = useState("");
+
   const filteredData = Data.filter((item) => {
     const searchFields = [
       "code",
@@ -22,11 +24,24 @@ function Search() {
       "groupstage3",
       "groupoffstage",
     ];
-    return searchFields.some((field) => {
-      const fieldValue = item[field] || ""; // Ensure a default value if the field is undefined
-      return fieldValue.toLowerCase().includes(searchTerm.toLowerCase());
-    });
+  
+    // Check if the selectedZone is not empty, and filter by zone if applicable
+    if (selectedZone) {
+      return (
+        item.zone.toLowerCase() === selectedZone.toLowerCase() &&
+        searchFields.some((field) => {
+          const fieldValue = item[field] || "";
+          return fieldValue.toLowerCase().includes(searchTerm.toLowerCase());
+        })
+      );
+    } else {
+      return searchFields.some((field) => {
+        const fieldValue = item[field] || "";
+        return fieldValue.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+    }
   });
+  
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -69,6 +84,20 @@ function Search() {
           onChange={handleSearch}
           className="w-2/3 px-4 py-2 rounded-xl border-2 border-dashed border-primary"
         />
+        <select
+  value={selectedZone}
+  onChange={(e) => setSelectedZone(e.target.value)}
+  className="w-2/3 px-4 py-2 rounded-xl border-2 border-dashed border-primary mt-3"
+>
+  <option value="">All Zones</option>
+  {/* Assuming the zones are available in your data */}
+  {Array.from(new Set(Data.map((item) => item.zone))).map((zone, index) => (
+    <option key={index} value={zone}>
+      {zone}
+    </option>
+  ))}
+</select>
+
         <div className="flex flex-wrap gap-2 justify-center mt-3">
           {filteredData.map((item, index) => (
             <div
